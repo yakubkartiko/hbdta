@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tata</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0396FF 0%, #ABDCFF 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            display: none;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            min-height: 300px;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #1a4b8c;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            width: calc(100% - 4rem);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            background: #0396FF;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(3, 150, 255, 0.2);
+        }
+
+        .btn:hover {
+            background: #0378cc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(3, 150, 255, 0.3);
+        }
+
+        .center-btn {
+            margin: 0 auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            text-align: left;
+            color: #2c3e50;
+        }
+
+        .bible-verse {
+            font-style: italic;
+            color: #3498db;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-left: 3px solid #0396FF;
+            background: rgba(3, 150, 255, 0.05);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .page.active h1 {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1" class="page active">
+        <h1>Benarkah kamu yang bernama Yuanita Oka Aviliani?</h1>
+        <div class="button-container">
+            <button class="btn" onclick="goToPage(2)">Bukan</button>
+            <button class="btn" onclick="goToPage(3)">Iya</button>
+        </div>
+    </div>
+
+    <div id="page2" class="page">
+        <h1>Boong, orang ini cuma kubuat untuk dirimu</h1>
+        <div class="button-container">
+            <div></div>
+            <button class="btn" onclick="goToPage(1)">Kembali</button>
+        </div>
+    </div>
+
+    <div id="page3" class="page">
+        <h1>Kamu dapat salam dari Yakub nihh</h1>
+        <div class="button-container">
+            <button class="btn" onclick="goToPage(1)">Kembali</button>
+            <button class="btn" onclick="goToPage(4)">Lanjut</button>
+        </div>
+    </div>
+
+    <div id="page4" class="page">
+        <img src="C:\Users\ACER\Downloads\hbdtata.JPG" alt="Birthday Photo">
+        <h1>HAPPY BIRTHDAY TATA</h1>
+        <div class="button-container">
+            <button class="btn" onclick="goToPage(3)">Kembali</button>
+            <button class="btn" onclick="goToPage(5)">Lanjut</button>
+        </div>
+        <audio id="birthdayMusic" loop>
+            <source src="C:\Users\ACER\Downloads\instrumenhbd.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div id="page5" class="page">
+        <div class="message">
+            <h1>Selamat ulang tahun Tata,</h1>
+            <p>Semoga di usia yang baru ini, segala impianmu tercapai dan apa yang kau rencanakan diberkati Tuhan.</p>
+            <p class="bible-verse">Seperti firman dalam Mazmur 20:5: "Kiranya diberikan-Nya kepadamu apa yang kaukehendaki dan dijadikan-Nya berhasil apa yang kaurancangkan."</p>
+            <p>Aku berharap tahun ini membawa kebahagiaan, kesuksesan, dan berkat yang berlimpah untukmu. Terima kasih sudah menjadi sahabat yang selalu ada selama 12 tahun lebih. Semoga kita bisa terus berbagi cerita dan tawa di tahun-tahun yang akan datang.</p>
+            <p>Tuhan memberkati selalu!</p>
+        </div>
+        <div class="button-container">
+            <button class="btn" onclick="goToPage(4)">Kembali</button>
+        </div>
+    </div>
+
+    <script>
+        function goToPage(pageNumber) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById('page' + pageNumber).classList.add('active');
+
+            // Handle music
+            const music = document.getElementById('birthdayMusic');
+            if (pageNumber >= 4) {
+                music.play().catch(e => console.log("Audio autoplay prevented:", e));
+            } else {
+                music.pause();
+                music.currentTime = 0;
+            }
+        }
+
+        // Prevent scrolling on mobile
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+    </script>
+</body>
+</html>
